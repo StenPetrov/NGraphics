@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NGraphics
 {
@@ -37,7 +38,10 @@ namespace NGraphics
 			: this (new Color (colorString), width)
 		{
 		}
-
+		public virtual Pen Clone()
+		{
+			return new Pen(Color, Width) { DashPattern = this.DashPattern?.ToList() };
+		}
 		public Pen WithWidth (double width)
 		{
 			return new Pen (Color, width);
