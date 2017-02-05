@@ -62,8 +62,9 @@ namespace NGraphics
 			public void DrawText (string text, Rect frame, Font font, TextAlignment alignment = TextAlignment.Left, Pen pen = null, Brush brush = null)
 			{
 			}
-			public void DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
+			public Rect DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
 			{
+				return new Rect(0, 0, 0, 0);
 			}
 			public void DrawRectangle (Rect frame, Size corner, Pen pen = null, Brush brush = null)
 			{

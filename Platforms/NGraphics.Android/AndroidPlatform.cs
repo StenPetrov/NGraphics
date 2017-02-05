@@ -295,10 +295,12 @@ namespace NGraphics
 			AddBrushPaint (paint, brush, fr);
 			graphics.DrawText (text, (float)point.X, (float)point.Y, paint);
 		}
-		public void DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
+		public Rect DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
 		{
+			var resultRect = new Rect(0, 0, 0, 0);
+
 			if (pen == null && brush == null)
-				return;
+				return resultRect;
 
 			using (var path = new global::Android.Graphics.Path ()) {
 
@@ -391,7 +393,9 @@ namespace NGraphics
 					graphics.DrawPath (path, paint);
 				}
 			}
+					return resultRect;
 		}
+
 		public void DrawRectangle (Rect frame, Size corner, Pen pen = null, Brush brush = null)
 		{
 			var left = (float)(frame.X);

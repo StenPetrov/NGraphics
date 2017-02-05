@@ -50,9 +50,9 @@ namespace NGraphics
 			NextCanvas.DrawText (text, frame, font, alignment, GetPen (pen), GetBrush (brush));
 		}
 
-		public virtual void DrawPath (System.Collections.Generic.IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
+		public virtual Rect DrawPath (System.Collections.Generic.IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
 		{
-			NextCanvas.DrawPath (ops, GetPen (pen), GetBrush (brush));
+			return NextCanvas.DrawPath (ops, GetPen (pen), GetBrush (brush));
 		}
 
 		public virtual void DrawRectangle (Rect frame, Size corner, Pen pen = null, Brush brush = null)
@@ -62,7 +62,7 @@ namespace NGraphics
 
 		public virtual void DrawEllipse (Rect frame, Pen pen = null, Brush brush = null)
 		{
-			NextCanvas.DrawEllipse (frame, GetPen (pen), GetBrush (brush));
+			NextCanvas. DrawEllipse (frame, GetPen (pen), GetBrush (brush));
 		}
 
 		public virtual void DrawImage (IImage image, Rect frame, double alpha = 1.0)

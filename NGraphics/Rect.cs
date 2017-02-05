@@ -198,7 +198,7 @@ namespace NGraphics
 
 		public override string ToString ()
 		{
-			return string.Format (CultureInfo.InvariantCulture, "Rect ({0}, {1}, {2}, {3})", X, Y, Width, Height);
+			return string.Format (CultureInfo.InvariantCulture, "Rect ({0:0.00}:{1:0.00}, {2:0.00}x{3:0.00})", X, Y, Width, Height);
 		}
 	}
 

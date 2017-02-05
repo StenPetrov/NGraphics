@@ -15,7 +15,7 @@ namespace NGraphics
 
 		public double PixelsPerInch { get; private set; }
 		public Graphic Graphic { get; private set; }
-		public Func<XElement, bool> ParseFilter { get; set; }
+		public Predicate<XElement> ParseFilter { get; set; }
 
 		readonly Dictionary<string, XElement> defs = new Dictionary<string, XElement>();
 		//		readonly XNamespace ns;
@@ -26,7 +26,7 @@ namespace NGraphics
 			Read(XDocument.Load(reader));
 		}
 
-		public SvgReader(XDocument svgXDocument, Func<XElement, bool> parseFilter, double pixelsPerInch = 160.0)
+		public SvgReader(XDocument svgXDocument, Predicate<XElement> parseFilter, double pixelsPerInch = 160.0)
 		{
 			ParseFilter = parseFilter;
 			PixelsPerInch = pixelsPerInch;
@@ -119,7 +119,7 @@ namespace NGraphics
 
 			var id = e.Attribute("id")?.Value;
 
-			Debug.WriteLine($"ApplyStyles to {e.Name.LocalName} {id} B {brush}; P {pen} Attributes: " + string.Join("; ", styleValues.Select(kv => $"{kv.Key}={kv.Value}")));
+			//Debug.WriteLine($"ApplyStyles to {e.Name.LocalName} {id} B {brush}; P {pen} Attributes: " + string.Join("; ", styleValues.Select(kv => $"{kv.Key}={kv.Value}")));
 
 			//
 			// Elements

@@ -49,9 +49,11 @@ namespace NGraphics
 		{
 			Graphic.Children.Add (new Text (text, frame, font, alignment, pen, brush) { Transform = CurrentTransform, });
 		}
-		public void DrawPath (IEnumerable<PathOp> commands, Pen pen = null, Brush brush = null)
+		public Rect DrawPath (IEnumerable<PathOp> commands, Pen pen = null, Brush brush = null)
 		{
-			Graphic.Children.Add (new Path (commands, pen, brush) { Transform = CurrentTransform, });
+			var path = new Path(commands, pen, brush) { Transform = CurrentTransform, };
+			Graphic.Children.Add (path);
+			return path.SampleableBox;
 		}
 		public void DrawRectangle (Rect frame, Size corner, Pen pen = null, Brush brush = null)
 		{

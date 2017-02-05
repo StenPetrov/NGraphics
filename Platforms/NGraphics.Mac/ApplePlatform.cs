@@ -352,10 +352,12 @@ namespace NGraphics
 			return !double.IsNaN (v) && !double.IsInfinity (v);
 		}
 
-		public void DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
+		public Rect DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
 		{
+			var resultRect = new Rect(0, 0, 0, 0);
+
 			if (pen == null && brush == null)
-				return;
+				return resultRect;
 
 			DrawElement (() => {
 
@@ -433,10 +435,12 @@ namespace NGraphics
 
 					throw new NotSupportedException ("Path Op " + op);
 				}
-
+				resultRect = bb.BoundingBox;
 				return bb.BoundingBox;
 
 			}, pen, brush);
+
+			return resultRect;
 		}
 		// http://stackoverflow.com/a/2835659/338
 		void AddRoundedRect (CGRect rrect, CGSize corner)
