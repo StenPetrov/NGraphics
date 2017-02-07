@@ -6,6 +6,8 @@ namespace NGraphics
 {
 	public class Graphic : IDrawable, IEdgeSampleable
 	{
+        public static bool DebugOutput = false;
+
 		public readonly List<Element> Children = new List<Element> ();
 
 		public Size Size;

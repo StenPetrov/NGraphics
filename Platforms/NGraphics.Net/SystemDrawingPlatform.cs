@@ -200,7 +200,7 @@ namespace NGraphics
             var fr = new Rect (point, new Size (sz.Width, sz.Height));
             graphics.DrawString (text, netFont, Conversions.GetBrush (brush, fr), Conversions.GetPointF (point - new Point (0, sz.Height - desc * ascale)));
 		}
-		public void DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
+		public Rect DrawPath (IEnumerable<PathOp> ops, Pen pen = null, Brush brush = null)
 		{
 			using (var path = new GraphicsPath ()) {
 
@@ -261,6 +261,8 @@ namespace NGraphics
 				if (pen != null) {
 					graphics.DrawPath (pen.GetPen (), path);
 				}
+
+                return frame;
 			}
 		}
 		public void DrawRectangle (Rect frame, Size corner, Pen pen = null, Brush brush = null)

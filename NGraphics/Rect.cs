@@ -209,13 +209,20 @@ namespace NGraphics
 		public Rect BoundingBox { get { return bb; } }
 		public void Add (Point point)
 		{
+           
 			if (nbb == 0) {
 				bb = new Rect (point, Size.Zero);
 			}
 			else {
 				bb = bb.Union (point);
 			}
-			nbb++;
+            System.Diagnostics.Debug.WriteLineIf(NGraphics.Graphic.DebugOutput, $"[GHQWRJAKDS] {DateTime.Now.ToString("HH:mm:ss.ffff")} BoundingBox.Add({point})->{bb} [{nbb}]");
+            if (point.DistanceTo(Point.Zero) > 1000)
+            {
+                throw new Exception("Too far");
+            }
+
+            nbb++;
 		}
 		public void Add (IEnumerable<Point> points)
 		{
